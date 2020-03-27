@@ -20,7 +20,7 @@ class VillageTest extends AnyWordSpecLike
           SmurfHutConnection(SmurfHut("F"), SmurfHut("D")))
 
       val path = VillageGpsFix.fixPath(connections)
-      path shouldEqual List(
+      val expectedPath = List(
         SmurfHut("A"),
         SmurfHut("G"),
         SmurfHut("D"),
@@ -30,6 +30,7 @@ class VillageTest extends AnyWordSpecLike
         SmurfHut("J"),
         SmurfHut("B"),
         SmurfHut("E"))
+      path shouldEqual oneOf(expectedPath, expectedPath.reverse)
     }
   }
 }
